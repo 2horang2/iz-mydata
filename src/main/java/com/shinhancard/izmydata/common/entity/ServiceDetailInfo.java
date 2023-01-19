@@ -21,7 +21,7 @@ public class ServiceDetailInfo {
     @JsonProperty("SVC_ID")
     private String serviceId;
 
-    @Column(length = 2000)
+    @Column(columnDefinition = "TEXT")
     @JsonProperty("구비서류")
     private String document;
 

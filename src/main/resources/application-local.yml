@@ -1,0 +1,31 @@
+project:
+  envCcd: D
+server:
+  port: 90
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://3.36.236.77:3306/mydata
+    username: shciz
+    password: 1234
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+       ddl-auto: update # (1) 스키마 자동 생성 //create-drop,update
+    show-sql: true      # (2) SQL 쿼리 출력
+    properties:
+      hibernate:
+        format_sql: true  # (3) SQL pretty print
+
+openapi:
+    url: https://api.odcloud.kr/api
+    key:
+        encoding: HI8T%2Fr7EgRYBH0MM1U5yFGXQM0npzLEcY%2Bh6SfnDILB8AV1KoTGyQRGUmbgyTD%2Ba5dzK55B9G2k6y0kkma18OQ%3D%3D
+        decoding: HI8T/r7EgRYBH0MM1U5yFGXQM0npzLEcY+h6SfnDILB8AV1KoTGyQRGUmbgyTD+a5dzK55B9G2k6y0kkma18OQ==
+logging:
+  pattern:
+    console: "%white([%d{yyyy-MM-dd HH:mm:ss}]) %yellow([%thread]) %highlight([%-5level]) %white([%-35logger{35}]) %white(%msg  %n)"
+  level:
+    root: WARN
+    com.shinhancard: DEBUG
+    jpa: DEBUG
