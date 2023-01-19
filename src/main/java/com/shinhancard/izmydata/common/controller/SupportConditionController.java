@@ -3,11 +3,11 @@ package com.shinhancard.izmydata.common.controller;
 import java.net.URI;
 import java.util.ArrayList;
 
-import com.shinhancard.izmydata.common.config.InitConfig;
 import com.shinhancard.izmydata.common.entity.SupportCondition;
 import com.shinhancard.izmydata.common.entity.SupportConditionVo;
 import com.shinhancard.izmydata.common.repository.SupportConditionRepository;
 import com.shinhancard.izmydata.common.vo.ResponseVo;
+import com.shinhancard.izmydata.config.InitConfig;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping(value = "/open-api/support-condition-list")
+@Tag(name = "관리자 API", description = "Mydata 서비스 지원조건정보 db 적재")
+@Api(hidden = true)
 public class SupportConditionController {
     private final InitConfig initConfig;
     private final SupportConditionRepository supportConditionRepository;
@@ -30,6 +35,7 @@ public class SupportConditionController {
     final int perPage = 1000;
 
     @GetMapping(value = "/initAllSupportCondition")
+    @ApiOperation(value = "서비스지원조건 data 다시 읽어서, db 적재하기", hidden = true)
     public ResponseEntity<ResponseVo> initAllServiceList() throws Exception {
 
         supportConditionRepository.deleteAll();
